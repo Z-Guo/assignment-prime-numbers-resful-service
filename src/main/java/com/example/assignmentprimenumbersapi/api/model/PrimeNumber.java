@@ -9,18 +9,18 @@ import java.util.List;
 
 @JacksonXmlRootElement(localName = "PrimeNumber")
 public class PrimeNumber {
-    private int initials;
+    private int initial;
     private List<Integer> primes ;
 
-    public PrimeNumber (int initials, List<Integer> primes) {
-        this.initials = initials;
+    public PrimeNumber (int initial, List<Integer> primes) {
+        this.initial = initial;
         this.primes = primes;
     }
 
     @JacksonXmlProperty
-    public int getInitials() { return initials; }
+    public int getInitial() { return initial; }
 
-    public void setInitials(int initials) {this.initials = initials ;}
+    public void setInitial(int initial) {this.initial = initial;}
     @JacksonXmlProperty
     public List<Integer> getPrimes() { return primes; }
 

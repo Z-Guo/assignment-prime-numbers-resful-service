@@ -21,10 +21,7 @@ public class PrimeNumberController {
     @GetMapping("/primes/{number}")
     public PrimeNumber getPrimes(@PathVariable int number) {
         List<Integer> primes = primeService.calculatePrimes(number);
-//        return new PrimeNumber(number,primes);
-        PrimeNumber primeNumber = new PrimeNumber(number, primes);
-        primeNumber.setPrimes(primes);
-        primeNumber.setInitials(number);
-        return primeNumber;
+        return new PrimeNumber(number,primes);
     }
+
 }
