@@ -20,7 +20,7 @@ public class PrimeService {
         return primes;
     }
 
-    private boolean isPrime(int number) {
+    boolean isPrime(int number) {
         if(number < 2 ) {
             return false;
         }
