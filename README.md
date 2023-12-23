@@ -1,13 +1,28 @@
 # Prime Numbers Restful Service 
 
-Prime Numbers is a Spring Boot-based project to provide a RESTful service that returns prime numbers up to a specified input value.
+This is a Spring Boot-based project to provide a RESTful service that returns prime numbers up to a specified input value.
 
 
 ## Prerequisites
 - [Java 17](https://www.oracle.com/java/technologies/downloads/#java17)
-- [Maven 3](https://maven.apache.org/download.cgi)
+- [Maven 3x](https://maven.apache.org/download.cgi)
+- [Git](https://git-scm.com/)
 
 ## Install
+
+Clone and use Maven to build
+`mvn clean install` 
+
+## Usage
+
+`http://localhost:8080/primes/{number}`
+
+### Response in JSON
+
+<img src="https://github.com/Z-Guo/assignment-prime-numbers-resful-service/assets/82909032/06c0efbc-aa1b-47c1-a963-4903c60e0999" width="500">
+
+### Response in XML 
+<img src="https://github.com/Z-Guo/assignment-prime-numbers-resful-service/assets/82909032/c9b6ccf4-57b0-4fb7-882f-7a09ac043924" width="500">
 
 
 
