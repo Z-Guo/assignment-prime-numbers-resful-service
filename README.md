@@ -16,6 +16,7 @@ Clone and use Maven to build
 ## Usage
 
 `http://localhost:8080/primes/{number}`
+`http://localhost:8080/primes/{number}algorithms=sieve`
 
 ### Response in JSON
 
