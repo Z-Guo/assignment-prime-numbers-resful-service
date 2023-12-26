@@ -1,34 +1,53 @@
 package com.example.assignmentprimenumbersapi.api.controller;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 import com.example.assignmentprimenumbersapi.api.model.PrimeNumber;
 import com.example.assignmentprimenumbersapi.service.PrimeService;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-
 @SpringBootTest
 class PrimeNumberControllerTest {
 
-        @Mock private PrimeService primeService;
+  private static final int INPUT = 10;
+  private static final List<Integer> EXPECTED_PRIMES = Arrays.asList(2, 3, 5, 7);
+  @Mock private PrimeService primeService;
+  @InjectMocks private PrimeNumberController primeNumberController;
 
-        @InjectMocks private PrimeNumberController primeNumberController;
+  @Test
+  void shouldReturnPrimesWithValidInputDefault() {
 
-        @Test
-        void shouldReturnPrimesListWithValidInput() {
-            int input = 10;
-            List<Integer> expectedPrimes = Arrays.asList(2, 3, 5, 7);
+    when(primeService.defaultCalculatePrimes(INPUT)).thenReturn(EXPECTED_PRIMES);
+    PrimeNumber defaultResult = primeNumberController.getPrimes(INPUT, null);
 
-            when(primeService.calculatePrimes(input)).thenReturn(expectedPrimes);
-            PrimeNumber result = primeNumberController.getPrimes(input);
+    assertEquals(INPUT, defaultResult.getInitial());
+    assertEquals(EXPECTED_PRIMES, defaultResult.getPrimes());
+  }
 
-            assertEquals(input, result.getInitial());
-            assertEquals(expectedPrimes, result.getPrimes());
-    }
+  @Test
+  void shouldReturnPrimesWithValidInputSieve() {
+
+    when(primeService.sieveCalculatePrimes(INPUT)).thenReturn(EXPECTED_PRIMES);
+    PrimeNumber sieveResult = primeNumberController.getPrimes(INPUT, "sieve");
+
+    assertEquals(INPUT, sieveResult.getInitial());
+    assertEquals(EXPECTED_PRIMES, sieveResult.getPrimes());
+  }
+
+  @Test
+  void shouldReturnSameResultForDefaultAndSieve() {
+
+    when(primeService.defaultCalculatePrimes(INPUT)).thenReturn(EXPECTED_PRIMES);
+    when(primeService.sieveCalculatePrimes(INPUT)).thenReturn(EXPECTED_PRIMES);
+    PrimeNumber defaultResult = primeNumberController.getPrimes(INPUT, null);
+    PrimeNumber sieveResult = primeNumberController.getPrimes(INPUT, "sieve");
+
+    assertEquals(defaultResult.getPrimes(), sieveResult.getPrimes());
+  }
 }
