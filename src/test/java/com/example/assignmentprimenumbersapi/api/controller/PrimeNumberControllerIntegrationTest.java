@@ -24,7 +24,7 @@ class PrimeNumberControllerIntegrationTest {
   @MockBean private PrimeService primeService;
 
   @Test
-  void shouldReturnDefaultPrimes() throws Exception {
+  void shouldReturnDefaultPrimesInJson() throws Exception {
     int n = 13;
 
     when(primeService.defaultCalculatePrimes(n)).thenReturn(Arrays.asList(2, 3, 5, 7, 11, 13));
@@ -39,7 +39,7 @@ class PrimeNumberControllerIntegrationTest {
   }
 
   @Test
-  void shouldReturnSievePrimes() throws Exception {
+  void shouldReturnSievePrimesInJson() throws Exception {
     int n = 17;
 
     when(primeService.sieveCalculatePrimes(n)).thenReturn(Arrays.asList(2, 3, 5, 7, 11, 13, 17));
@@ -51,5 +51,26 @@ class PrimeNumberControllerIntegrationTest {
         .andExpect(jsonPath("$.initial").value("17"))
         .andExpect(jsonPath("$.primes").isArray());
     verify(primeService).sieveCalculatePrimes(n);
+  }
+
+  @Test
+  void shouldReturnDefaultPrimesInXML() throws Exception {
+    int n = 17;
+
+    mockMvc
+        .perform(get("/primes/{n}", n).header("Accept", "application/xml"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_XML));
+  }
+
+  @Test
+  void shouldReturnSievePrimesInXML() throws Exception {
+    int n = 13;
+
+    mockMvc
+        .perform(
+            get("/primes/{n}", n).param("algorithm", "sieve").header("Accept", "application/xml"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_XML));
   }
 }
