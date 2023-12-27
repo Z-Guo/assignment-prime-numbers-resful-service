@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PrimeService {
 
-  @Cacheable("primes")
+  @Cacheable("primesDefault")
   public List<Integer> defaultCalculatePrimes(int number) {
     List<Integer> primes = new ArrayList<>();
     for (int i = 2; i <= number; i++) {
@@ -29,6 +29,8 @@ public class PrimeService {
     }
     return true;
   }
+
+  @Cacheable("primesSieve")
 
   public List<Integer> sieveCalculatePrimes(int number) {
     boolean[] isPrime = new boolean[Math.max(number, 1) + 1];

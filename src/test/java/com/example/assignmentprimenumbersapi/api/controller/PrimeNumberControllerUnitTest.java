@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PrimeNumberControllerTest {
+class PrimeNumberControllerUnitTest {
 
   private static final int INPUT = 10;
   private static final List<Integer> EXPECTED_PRIMES = Arrays.asList(2, 3, 5, 7);
@@ -45,6 +45,7 @@ class PrimeNumberControllerTest {
 
     when(primeService.defaultCalculatePrimes(INPUT)).thenReturn(EXPECTED_PRIMES);
     when(primeService.sieveCalculatePrimes(INPUT)).thenReturn(EXPECTED_PRIMES);
+
     PrimeNumber defaultResult = primeNumberController.getPrimes(INPUT, null);
     PrimeNumber sieveResult = primeNumberController.getPrimes(INPUT, "sieve");
 
