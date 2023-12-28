@@ -14,6 +14,7 @@ Clone and use Maven to build
 
 ## Usage
 ### Deployment URLS
+JSON and XML media types are available via POSTMAN
 
 - Elastic Beanstalk URL: `http://zg-prime-number-service.eu-west-2.elasticbeanstalk.com/primes/{number}`
 - API Gateway URL: `https://nkjsgkkoue.execute-api.eu-west-2.amazonaws.com/production/primes/{number}`
