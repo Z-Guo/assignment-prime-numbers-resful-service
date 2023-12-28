@@ -2,7 +2,6 @@
 
 This is a Spring Boot-based project to provide a RESTful service that returns prime numbers up to a specified input value. 
 
-
 ## Prerequisites
 - [Java 17](https://www.oracle.com/java/technologies/downloads/#java17)
 - [Maven 3x](https://maven.apache.org/download.cgi)
@@ -14,15 +13,45 @@ Clone and use Maven to build
 `mvn clean install` 
 
 ## Usage
-- `http://localhost:8080/primes/{number}`
-- `http://localhost:8080/primes/{number}algorithms=sieve`
+### Calculate The Prime Numbers
+Get the prime numbers up until a given number. The response includes both the input number and the list of prime numbers up to the specified number. 
 
-### Response in JSON
+- URL: `primes/{number}`
+- Method: `GET`
 
-<img src="https://github.com/Z-Guo/assignment-prime-numbers-resful-service/assets/82909032/06c0efbc-aa1b-47c1-a963-4903c60e0999" width="500">
+#### Parameters
+- `{number}` **required**: upper limit for generating prime numbers 
+- `algorithm` **optional**: select a different algorithm for generating prime numbers, default it not specified 
+  - `sieve`: Sieve of Eratosthenes algorithm
 
-### Response in XML 
-<img src="https://github.com/Z-Guo/assignment-prime-numbers-resful-service/assets/82909032/c9b6ccf4-57b0-4fb7-882f-7a09ac043924" width="500">
+
+#### Response in JSON
+`Content-Type: application/json` 
+```json
+{
+    "initial": 9,
+    "primes": [
+        2,
+        3,
+        5,
+        7
+    ]
+}
+```
+
+#### Response in XML 
+`Content-Type: application/xml` 
+```xml
+<PrimeNumber>
+    <initial>9</initial>
+    <primes>
+        <primes>2</primes>
+        <primes>3</primes>
+        <primes>5</primes>
+        <primes>7</primes>
+    </primes>
+</PrimeNumber>
+```
 
 
 ## Frameworks/Libraries
