@@ -15,8 +15,8 @@ Clone and use Maven to build
 ## Usage
 ### Deployment URLS
 
-Elastic Beanstalk URL: `http://zg-prime-number-service.eu-west-2.elasticbeanstalk.com/primes/{number}`
-API Gateway URL: `https://nkjsgkkoue.execute-api.eu-west-2.amazonaws.com/production/primes/{number}`
+- Elastic Beanstalk URL: `http://zg-prime-number-service.eu-west-2.elasticbeanstalk.com/primes/{number}`
+- API Gateway URL: `https://nkjsgkkoue.execute-api.eu-west-2.amazonaws.com/production/primes/{number}`
 
 _See Postman [screenshots](https://github.com/Z-Guo/assignment-prime-numbers-resful-service/issues/5#issuecomment-1870910182)_
 ### Calculate The Prime Numbers
