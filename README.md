@@ -27,7 +27,7 @@ Get the prime numbers up until a given number. The response includes both the in
 
 #### Parameters
 - `{number}` **required**: upper limit for generating prime numbers 
-- `algorithm` **optional**: select a different algorithm for generating prime numbers, default it not specified 
+- `algorithm` **optional**: select a different algorithm for generating prime numbers, default if not specified 
   - `sieve`: Sieve of Eratosthenes algorithm
 
 
